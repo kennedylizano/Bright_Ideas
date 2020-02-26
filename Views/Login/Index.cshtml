@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Bright_Ideas Login and Registration";
+}
+
+<h1 style="text-align: center;" >Welcome</h1>
+@{
+    <ul>
+        @foreach(var error in ViewBag.valErrors)
+        {
+            if(error.Errors.Count > 0)
+                {
+                    <li>@error.Errors[0].ErrorMessage</li>
+                }
+        }
+    </ul>
+}
+
+<h1>Register</h1>
+<form action="register" method="POST">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div>
+        <label for="UserName">Name:</label><input class="form-control" id="UserName" type="text" name="UserName" value="">
+        @ViewBag.valErrors
+        </div>
+        <label for="UserAlias">Alias:</label><input class="form-control" id="UserAlias" type="text" name="UserAlias" value="">
+        <label for="Email">Email Address:</label><input class="form-control" id="Email" type="text" name="Email" value="">
+        <label for="Password">Password:</label><input class="form-control" id="Password" type="password" name="Password" value="">
+        <label for="PasswordConf">Retype-Password:</label><input class="form-control" id="PasswordConf" type="password" name="PasswordConf" value="">
+        <input type="submit" class="btn btn-primary"  name="register" value="Register"   >
+    </fieldset>
+</form>
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________________________________________________
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|___________________________________________________________________________________________________________________________________________________________________________|
+
+<H1>Log In</H1>
+
+
+<form action="login" method="POST">
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <label for="Email">Email Address:</label><input class="form-control" type="text" name="Email" value="">
+        <label for="Password">Password:</label><input class="form-control" type="password" name="Password" value="">
+        <input type="submit"  class="btn btn-primary" name="login" value="Login">
+    </fieldset>
+</form>
